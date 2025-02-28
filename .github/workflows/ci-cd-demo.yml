@@ -45,12 +45,12 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
-        working-directory: .terraform
+        working-directory: .
 
       - name: Plan Terraform Deployment
         run: terraform plan -out=tfplan
-        working-directory: .terraform
+        working-directory: .
 
       - name: Apply Terraform Deployment
         run: terraform apply -auto-approve tfplan
-        working-directory: .terraform
+        working-directory: .
