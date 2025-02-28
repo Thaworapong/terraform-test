@@ -1,5 +1,10 @@
-name: CI-Test
-on: push
+name: CI/CD Pipeline
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # ✅ Allows manual trigger
+
 jobs:
   CI-Jobs:
     runs-on: ubuntu-latest
@@ -25,7 +30,7 @@ jobs:
         run: python test-script/demo-test-2.py
 
   deploy:
-    needs: CI-Jobs  # Run deployment only if CI tests pass
+    needs: CI-Jobs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -49,16 +54,16 @@ jobs:
 
       - name: Plan Terraform Deployment
         run: terraform plan -out=tfplan
-        working-directory: . 
+        working-directory: .
 
       - name: Apply Terraform Deployment
         run: terraform apply -auto-approve tfplan
         working-directory: .
 
- destroy:
+  destroy:
     needs: deploy  # Destroy only after deployment
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'  # Run only on manual trigger
+    if: github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
