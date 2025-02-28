@@ -19,7 +19,7 @@ jobs:
           fi
 
       - name: Run first test script
-        run: python test-scripts/demo-test-1.py
+        run: python test-script/demo-test-1.py
 
       - name: Run second test script
-        run: python test-scripts/demo-test-2.py
+        run: python test-script/demo-test-2.py
