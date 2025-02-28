@@ -7,6 +7,7 @@ output "s3_bucket_name" {
   value = module.s3_bucket.bucket_name
 }
 
+/* 
 module "vpc" {
   source                = "./modules/vpc"
   vpc_cidr             = "10.0.0.0/16"
@@ -18,5 +19,6 @@ module "vpc" {
   availability_zone_1   = "us-east-1a"
   availability_zone_2   = "us-east-1b"
 }
+*/
 
 
