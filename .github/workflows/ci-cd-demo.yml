@@ -4,5 +4,22 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "Hello World!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'  # Replace with the required Python version
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Run first test script
+        run: python test-scripts/demo-test-1.py
+
+      - name: Run second test script
+        run: python test-scripts/demo-test-2.py
