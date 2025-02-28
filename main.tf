@@ -19,13 +19,4 @@ module "vpc" {
   availability_zone_2   = "us-east-1b"
 }
 
-module "ec2_instance" {
-  source            = "./modules/ec2"
-  ami_id           = "ami-0abcdef1234567890"  # Replace with a valid AMI ID
-  instance_type    = "t2.micro"
-  subnet_id        = module.vpc.public_subnet_1_id  # Use a public or private subnet
-  key_name         = "my-keypair"  # Replace with your SSH key
-  security_group_id = aws_security_group.ec2_sg.id
-  public_ip        = true  # Set false if in a private subnet
-  instance_name    = "MyEC2Instancetest"
-}
+

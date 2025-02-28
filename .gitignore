@@ -1,0 +1,14 @@
+# Terraform state files (never commit!)
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform working directory (contains provider binaries)
+.terraform/
+
+# Terraform lock file (optional)
+.terraform.lock.hcl
+
+# Ignore provider binaries
+terraform-provider-aws_*.exe
+modules.json
+LICENSE.txt
